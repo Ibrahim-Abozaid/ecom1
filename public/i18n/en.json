@@ -1,0 +1,21 @@
+{
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "brands": "Brands",
+    "login": "Login",
+    "register": "Register",
+    "logout": "LogOut",
+    "lang": "Lang",
+    "EN": "EN",
+    "AR": "AR",
+    "wishlist": "wishlist"
+  },
+  "login": {
+    "loginNow": "Login Now",
+    "email": "Email",
+    "password": "Password",
+    "SignIn": "Sign In"
+  }
+}

@@ -1,0 +1,62 @@
+@if(cartDetails.totalCartPrice ){
+<section class="main-section w-3/4 mx-auto">
+  <h1 class="text-center text-3xl text-green-500">Shop Cart</h1>
+  <div class="flex items-center justify-between">
+    <span class="text-green-500"
+      >Total Cart Price : {{ cartDetails.totalCartPrice }} EGP</span
+    >
+    <button
+      class="bg-red-900 border rounded text-xs px-6 py-2 text-white"
+      (click)="clearItems()"
+    >
+      Clear Cart
+    </button>
+  </div>
+  @for (prod of cartDetails.products; track prod.product.id) {
+  <div class="grid md:grid-cols-[10%_minmax(0,1fr)] border-b mb-2">
+    <div>
+      <img
+        [src]="prod.product.imageCover"
+        class="w-full h-[100px] object-contain"
+        alt=""
+      />
+    </div>
+    <div class="flex justify-between items-center">
+      <div class="mx-1">
+        <h3>{{ prod.product.title }}</h3>
+        <h4>{{ prod.price }} EGP</h4>
+        <button (click)="removeItem(prod.product.id)">
+          <i class="fas fa-trash-can text-green-500"></i> Remove
+        </button>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          (click)="updateCount(prod.product.id, prod.count + 1)"
+          class="text-green-500 text-2xl"
+        >
+          <i class="fa-regular fa-square-plus"></i>
+        </button>
+        <span>{{ prod.count }}</span>
+        <button
+          (click)="updateCount(prod.product.id, prod.count - 1)"
+          class="text-green-500 text-2xl"
+        >
+          <i class="fa-regular fa-square-minus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  }
+  <button class="btn-main" [routerLink]="['/checkout', cartDetails._id]">
+    Checkout
+  </button>
+</section>
+
+}@else {
+<h1
+  class="text-center bg-gray-200 w-1/2 border-2 border-gray-500 rounded-lg text-2xl mx-auto py-6 text-gray-600"
+>
+  No Data Found
+</h1>
+}

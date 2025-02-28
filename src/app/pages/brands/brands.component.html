@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="flex flex-wrap gap-2 justify-center">
+    @for (brand of brands; track $index) {
+    <div
+      [routerLink]="['/brandDetail', brand._id]"
+      class="cursor-pointer card border w-1/5 h-[300px] border-green-400/50 rounded-md overflow-hidden shadow relative hover:border-green-500"
+    >
+      <div class="card">
+        <div>
+          <img
+            [src]="brand.image"
+            class="card-img-top w-full object-contain"
+            alt="{{ brand.name }}"
+          />
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ brand.name }}</h5>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

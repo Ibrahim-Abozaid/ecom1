@@ -1,0 +1,57 @@
+@if(wishData){
+<div>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+    @for (item of wishData; track $index) {
+    <div
+      class="card border border-green-400/50 rounded-md overflow-hidden shadow relative hover:border-green-500"
+    >
+      <div class="">
+        <div [routerLink]="['/details', item._id]">
+          <div class="image">
+            <img
+              [src]="item.imageCover"
+              class="w-full h-[250px] object-contain"
+              alt="{{ item.title }}"
+            />
+          </div>
+          <div class="px-2 py-4">
+            <h3 class="text-green-500 text-xl">
+              {{ item.title.split(" ").slice(0, 3).join(" ") }}
+            </h3>
+            <div class="flex mt-4 items-center">
+              <i class="fa fa-star text-warning me-1"></i>
+              <span>{{ item.ratingsAverage }}</span>
+            </div>
+            <div class="flex items-center content-between mt-3">
+              <span class="price">{{ item.price }}EGP</span>
+              <span class="sale text-green-500">{{ item.price + 100 }}EGP</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1 flex justify-between">
+          <button
+            class="bg-green-500 block px-2 py-1 text-white"
+            (click)="addProductToCart(item._id)"
+          >
+            Add To Cart
+          </button>
+          <button
+            class="bg-red-500 block px-2 py-1 text-white"
+            (click)="deleteProductFormWish(item._id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
+}@else {
+<h1
+  class="text-center bg-gray-200 w-1/2 border-2 border-gray-500 rounded-lg text-2xl mx-auto py-6 text-gray-600"
+>
+  No Data Found
+</h1>
+}
